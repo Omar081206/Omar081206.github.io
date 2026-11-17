@@ -63,6 +63,10 @@ function dessus() {
 }
 
 function activer(f) {
+  // Déjà au premier plan : rien à changer, donc rien à reconstruire.
+  if (idActive === f.id && f.element.style.zIndex === String(zSommet)) {
+    return;
+  }
   idActive = f.id;
   for (let autre of fenetres) {
     autre.element.classList.toggle("fenetre--active", autre === f);
@@ -298,7 +302,15 @@ Fenetres.enregistrer = function (element, options) {
   bureau.insertBefore(element, ancreFenetres);
   fenetres.push(f);
 
-  element.addEventListener("pointerdown", () => activer(f));
+  // Souris : premier plan dès l'appui. Toucher : au clic seulement, car Safari
+  // sur iPhone annule le clic si la page change sous le doigt (barre des tâches
+  // et barre de menu reconstruites par activer()).
+  element.addEventListener("pointerdown", function (e) {
+    if (e.pointerType === "mouse") {
+      activer(f);
+    }
+  });
+  element.addEventListener("click", () => activer(f), true);
   for (let bouton of element.querySelectorAll("[data-commande]")) {
     bouton.addEventListener("click", function () {
       let commande = bouton.getAttribute("data-commande");
