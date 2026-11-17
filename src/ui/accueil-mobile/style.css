@@ -1,0 +1,51 @@
+/* Bloc accueil-mobile : visible seulement sous 700 px */
+.accueil-mobile {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .accueil-mobile {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 4px;
+    padding: 32px max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));
+  }
+
+  .accueil-mobile__heure {
+    margin: 0;
+    font-family: var(--police-titre);
+    font-size: 68px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--couleur-rouge);
+  }
+
+  .accueil-mobile__date {
+    margin: 0;
+    font-family: var(--police-mono);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--couleur-texte);
+  }
+
+  .accueil-mobile__identite {
+    margin: 6px 0 0;
+    font-family: var(--police-mono);
+    font-size: 13px;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    color: var(--couleur-texte);
+  }
+
+  .accueil-mobile__session {
+    margin: 10px 0 0;
+    font-family: var(--police-mono);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--couleur-cyan);
+  }
+}

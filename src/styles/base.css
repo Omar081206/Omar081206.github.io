@@ -1,0 +1,84 @@
+/* Remise à zéro et styles de base des éléments HTML. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* L'attribut hidden l'emporte toujours sur un display posé par une classe */
+[hidden] {
+  display: none !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--couleur-vide);
+  color: var(--couleur-texte);
+  font-family: var(--police-texte);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+/* Curseur du jeu : carré cyan avec un trait, rempli au survol d'un élément cliquable */
+html,
+body {
+  cursor: url("../assets/curseurs/normal.svg") 10 10, default;
+}
+
+button,
+a,
+label {
+  cursor: url("../assets/curseurs/actif.svg") 10 10, pointer;
+}
+
+input[type="text"] {
+  cursor: text;
+}
+
+:where(a, button, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--couleur-cyan);
+  outline-offset: 2px;
+}
+
+/* Message affiché seulement sans JavaScript */
+.sans-script {
+  margin: 0;
+  padding: 24px;
+  font-family: var(--police-mono);
+  line-height: 1.5;
+}
+
+.sans-script a {
+  color: var(--couleur-cyan);
+}
+
+/* Texte lu par les lecteurs d'écran, invisible à l'écran */
+.visuellement-cache {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Icônes du sprite : trait seul, couleur du texte */
+.icone {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}

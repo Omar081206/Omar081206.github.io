@@ -1,0 +1,14 @@
+<div class="apercu__couverture"><img class="apercu__image" src="{{image}}" alt="{{legende}}" loading="lazy"></div>
+<div class="apercu__entete">
+  <h3 class="apercu__nom">{{nom}}</h3>
+  <p class="badge badge--actif">{{badge}}</p>
+</div>
+<div class="apercu__actions">
+  <button type="button" class="action" data-action="ouvrir" data-focus="apercu-ouvrir" aria-keyshortcuts="Enter"><kbd class="action__touche">&#8629;</kbd>Ouvrir la fiche projet</button>
+  <button type="button" class="action" data-lien="maquette" data-focus="apercu-maquette" aria-keyshortcuts="F"><kbd class="action__touche">F</kbd>{{libelleMaquette}}</button>
+  <button type="button" class="action" data-lien="code" data-focus="apercu-code" aria-keyshortcuts="G"><kbd class="action__touche">G</kbd>{{libelleCode}}</button>
+</div>
+<p class="apercu__type">{{type}}</p>
+<p class="apercu__annee">Année {{annee}}</p>
+<p class="apercu__description">{{description}}</p>
+<slot name="technos"></slot>

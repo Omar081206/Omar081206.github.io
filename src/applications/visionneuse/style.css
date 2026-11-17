@@ -1,0 +1,63 @@
+/* Bloc visionneuse : agrandissement plein écran des captures */
+.visionneuse {
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(7, 9, 13, 0.97);
+  color: var(--couleur-texte);
+}
+
+.visionneuse[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.visionneuse::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.visionneuse__barre {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--couleur-panneau);
+  border-bottom: 1px solid var(--couleur-rouge);
+}
+
+.visionneuse__legende {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--police-mono);
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--couleur-texte);
+}
+
+.visionneuse__echelle {
+  margin: 0 8px 0 0;
+  font-size: 14px;
+}
+
+.visionneuse__corps {
+  flex: 1;
+  min-height: 0;
+  padding: 16px;
+  overflow: auto;
+}
+
+.visionneuse__image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid var(--couleur-ligne);
+}

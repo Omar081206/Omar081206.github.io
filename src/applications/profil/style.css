@@ -1,0 +1,80 @@
+/* Bloc profil : texte de présentation à gauche, accès rapides à droite */
+.profil {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 200px;
+  gap: 22px;
+  align-items: start;
+}
+
+.profil__faits {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 18px;
+  padding: 0;
+  list-style: none;
+  font-family: var(--police-mono);
+  font-size: 13px;
+}
+
+.profil__fait {
+  display: grid;
+  grid-template-columns: 11ch 1fr;
+  gap: 14px;
+}
+
+.profil__libelle {
+  color: var(--couleur-attenue);
+}
+
+.profil__lateral {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  background: var(--couleur-panneau-2);
+  border: 1px solid var(--couleur-ligne);
+  border-left: 3px solid var(--couleur-rouge);
+}
+
+.profil__surtitre {
+  margin: 4px 0 0;
+}
+
+.profil__statut {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 0;
+  font-family: var(--police-mono);
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--couleur-texte);
+}
+
+.profil__voyant {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  margin-top: 3px;
+  background: var(--couleur-cyan);
+  box-shadow: 0 0 6px var(--couleur-cyan);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .profil__voyant {
+    animation: clignoter 1.6s steps(1) infinite;
+  }
+}
+
+.profil__liens {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 700px) {
+  .profil {
+    grid-template-columns: 1fr;
+  }
+}

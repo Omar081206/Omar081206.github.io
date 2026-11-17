@@ -1,0 +1,27 @@
+/* Animations partagées par plusieurs blocs. */
+
+@keyframes clignoter {
+  50% {
+    opacity: 0.15;
+  }
+}
+
+/* Ouverture d'une fenêtre : allumage d'un tube cathodique */
+@keyframes allumage {
+  0% {
+    transform: scale(0.6, 0.02);
+    filter: brightness(3);
+    opacity: 0.6;
+  }
+
+  45% {
+    transform: scale(1, 0.02);
+    filter: brightness(2.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: none;
+    filter: none;
+  }
+}

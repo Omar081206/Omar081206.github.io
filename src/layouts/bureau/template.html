@@ -1,0 +1,19 @@
+<div class="ecran">
+  <h1 class="visuellement-cache">Portfolio d'Omar : un bureau d'ordinateur, NOS</h1>
+  <slot name="fond"></slot>
+  <slot name="barre-menu"></slot>
+  <main class="bureau">
+    <slot name="accueil-mobile"></slot>
+    <slot name="raccourcis"></slot>
+    <!-- Les fenêtres sont ajoutées ici par lib/fenetres.js -->
+    <slot name="visionneuse"></slot>
+    <slot name="toast"></slot>
+    <slot name="guide"></slot>
+    <nav class="bureau__navigation" aria-label="Applications">
+      <slot name="dock"></slot>
+    </nav>
+  </main>
+  <slot name="hud"></slot>
+  <p class="ecran__depot" hidden>Déposez l'image pour le fond d'écran</p>
+  <slot name="demarrage"></slot>
+</div>

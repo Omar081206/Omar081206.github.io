@@ -1,0 +1,36 @@
+<div class="accueil">
+  <svg class="titre-omar accueil__titre" viewBox="-10 -10 1070 380" role="img" aria-labelledby="titre-omar-texte">
+    <title id="titre-omar-texte">Portfolio Omar</title>
+    <defs>
+      <filter id="titre-omar-rouge" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="1 0 0 0 0  0 0 0 0 0.05  0 0 0 0 0.15  0 0 0 0.8 0"/></filter>
+      <filter id="titre-omar-cyan" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 0.1  0 1 0 0 0  0 0 1 0 0  0 0 0 0.8 0"/></filter>
+      <clipPath id="titre-omar-tranche-1"><rect class="titre-omar__fente" x="-200" y="0" width="1500" height="14"/></clipPath>
+      <clipPath id="titre-omar-tranche-2"><rect class="titre-omar__fente" x="-200" y="0" width="1500" height="8"/></clipPath>
+      <clipPath id="titre-omar-tranche-3"><rect class="titre-omar__fente" x="-200" y="0" width="1500" height="22"/></clipPath>
+      <image id="titre-omar-lisse" x="66.4" y="64" width="917.3" height="191" href="{{lisse}}"/>
+      <image id="titre-omar-glitch" x="66.4" y="64" width="917.3" height="191" href="{{glitch}}"/>
+    </defs>
+    <use class="titre-omar__base" href="#titre-omar-lisse"/>
+    <g class="titre-omar__glitch" aria-hidden="true">
+      <use class="titre-omar__canal titre-omar__canal--rouge" href="#titre-omar-glitch" filter="url(#titre-omar-rouge)"/>
+      <use class="titre-omar__canal titre-omar__canal--cyan" href="#titre-omar-glitch" filter="url(#titre-omar-cyan)"/>
+      <use href="#titre-omar-glitch"/>
+      <g class="titre-omar__tranche titre-omar__tranche--1" clip-path="url(#titre-omar-tranche-1)"><use href="#titre-omar-glitch"/></g>
+      <g class="titre-omar__tranche titre-omar__tranche--2" clip-path="url(#titre-omar-tranche-2)"><use href="#titre-omar-glitch"/></g>
+      <g class="titre-omar__tranche titre-omar__tranche--3" clip-path="url(#titre-omar-tranche-3)"><use href="#titre-omar-glitch"/></g>
+    </g>
+    <g class="titre-omar__sous-titre">
+      <path class="titre-omar__trait" d="M560 316H588M616 316H638M666 316L674 322H688M716 316H738M766 316H788M816 316L824 322H838M866 316H888M916 316H938M966 316L974 322H988M1016 316H1090"/>
+      <circle cx="733" cy="316" r="4"/><circle cx="883" cy="316" r="4"/>
+      <text x="600" y="330">P</text><text x="650" y="330">O</text><text x="700" y="330">R</text><text x="750" y="330">T</text><text x="800" y="330">F</text><text x="850" y="330">O</text><text x="900" y="330">L</text><text x="950" y="330">I</text><text x="1000" y="330">O</text>
+    </g>
+  </svg>
+  <div class="accueil__heros">
+    <p class="accueil__identite">{{accroche}}</p>
+    <ul class="accueil__acces" aria-label="Accès rapide">
+      <li><button type="button" class="accueil__bouton" data-ouvrir="projets"><span class="accueil__bouton-cadre"><span class="accueil__bouton-interieur"><svg class="icone accueil__bouton-icone" aria-hidden="true"><use href="#i-folder"></use></svg>Voir mes projets</span></span></button></li>
+      <li><button type="button" class="accueil__bouton" data-ouvrir="contact"><span class="accueil__bouton-cadre"><span class="accueil__bouton-interieur"><svg class="icone accueil__bouton-icone" aria-hidden="true"><use href="#i-mail"></use></svg>Me contacter</span></span></button></li>
+      <li><button type="button" class="accueil__bouton" data-ouvrir="profil"><span class="accueil__bouton-cadre"><span class="accueil__bouton-interieur"><svg class="icone accueil__bouton-icone" aria-hidden="true"><use href="#i-user"></use></svg>Profil</span></span></button></li>
+    </ul>
+  </div>
+</div>

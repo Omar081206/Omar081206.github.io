@@ -1,0 +1,19 @@
+<div class="contact">
+  <p class="surtitre">Canal ouvert</p>
+  <dl class="contact__liste">
+    <div class="contact__ligne">
+      <dt class="contact__libelle">MAIL</dt>
+      <dd class="contact__valeur contact__valeur--mail"><a class="contact__lien" href="mailto:{{mail}}">{{mail}}</a><button type="button" class="contact__copier" data-action="copier" aria-label="Copier l'adresse mail"><svg class="icone contact__copier-icone" aria-hidden="true"><use href="#i-copy"></use></svg>Copier</button></dd>
+    </div>
+    <div class="contact__ligne">
+      <dt class="contact__libelle">LINKEDIN</dt>
+      <dd class="contact__valeur"><a class="contact__lien" href="{{linkedinUrl}}" target="_blank" rel="noopener">{{linkedinTexte}}</a></dd>
+    </div>
+    <div class="contact__ligne">
+      <dt class="contact__libelle">GITHUB</dt>
+      <dd class="contact__valeur"><a class="contact__lien" href="{{githubUrl}}" target="_blank" rel="noopener">{{githubTexte}}</a></dd>
+    </div>
+  </dl>
+  <a class="bouton-cv" href="{{cv}}" download><svg class="icone bouton-cv__icone" aria-hidden="true"><use href="#i-down"></use></svg>Télécharger mon CV <span class="bouton-cv__format">PDF</span></a>
+  <p class="contact__credit">{{credits}}</p>
+</div>

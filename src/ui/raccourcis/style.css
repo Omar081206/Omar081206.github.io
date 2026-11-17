@@ -1,0 +1,119 @@
+/*
+  Bloc raccourcis : icônes du bureau.
+  Ordinateur : colonne de tuiles à gauche, comme sur un vrai bureau.
+  Téléphone : grille d'applications sous l'horloge.
+*/
+.raccourcis {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1;
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.raccourcis__bouton {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  width: 116px;
+  padding: 6px 2px 8px;
+  background: none;
+  border: 1px solid transparent;
+  font-family: var(--police-titre);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--couleur-texte);
+}
+
+.raccourcis__libelle {
+  padding: 1px 5px;
+  background: rgba(7, 9, 13, 0.8);
+}
+
+.raccourcis__bouton:hover {
+  border-color: var(--couleur-ligne);
+  background: rgba(7, 9, 13, 0.55);
+}
+
+.raccourcis__bouton:hover .raccourcis__icone {
+  color: var(--couleur-cyan);
+  border-color: var(--couleur-cyan);
+}
+
+.raccourcis__bouton:focus-visible {
+  background: rgba(7, 9, 13, 0.88);
+  border-color: var(--couleur-cyan);
+  color: var(--couleur-texte);
+}
+
+.raccourcis__icone {
+  width: 58px;
+  height: 58px;
+  padding: 14px;
+  color: var(--couleur-rouge);
+  background: var(--couleur-panneau-2);
+  border: 1px solid var(--couleur-ligne);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+
+@media (max-height: 760px) and (min-width: 701px) {
+  .raccourcis {
+    gap: 4px;
+  }
+
+  .raccourcis__icone {
+    width: 50px;
+    height: 50px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .raccourcis {
+    position: relative;
+    top: auto;
+    left: auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px 8px;
+    padding: 28px max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px));
+  }
+
+  .raccourcis__bouton {
+    width: 100%;
+    gap: 8px;
+    padding: 0;
+    border: 0;
+    font-size: 14px;
+  }
+
+  .raccourcis__libelle {
+    padding: 0;
+    background: none;
+  }
+
+  .raccourcis__bouton:hover {
+    background: none;
+    border-color: transparent;
+  }
+
+  .raccourcis__bouton:focus-visible {
+    background: rgba(7, 9, 13, 0.88);
+    outline-offset: 4px;
+  }
+
+  .raccourcis__icone {
+    width: 60px;
+    height: 60px;
+    padding: 15px;
+  }
+
+  .raccourcis__bouton:active .raccourcis__icone {
+    color: var(--couleur-cyan);
+    border-color: var(--couleur-cyan);
+  }
+}

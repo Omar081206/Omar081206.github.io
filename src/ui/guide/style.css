@@ -1,0 +1,104 @@
+/* Bloc guide : bulle de bienvenue, en bas à droite au-dessus de la barre des tâches */
+.guide {
+  position: absolute;
+  top: 16px;
+  left: 140px;
+  z-index: 700;
+  width: min(330px, calc(100% - 160px));
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px 16px;
+  background: var(--couleur-panneau);
+  border: 1px solid var(--couleur-cyan);
+  box-shadow: 0 0 24px rgba(94, 246, 255, 0.18);
+}
+
+/* Flèche vers la colonne d'icônes */
+.guide::before {
+  content: "";
+  position: absolute;
+  top: 26px;
+  left: -11px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid var(--couleur-cyan);
+}
+
+.guide[hidden] {
+  display: none;
+}
+
+.guide__titre {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-family: var(--police-titre);
+  font-size: 19px;
+  line-height: 1.2;
+  color: var(--couleur-jaune);
+}
+
+.guide__logo {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+.guide__texte {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--couleur-texte);
+}
+
+.guide__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.guide__bouton {
+  min-height: 36px;
+  padding: 5px 12px;
+  background: transparent;
+  border: 1px solid var(--couleur-cyan);
+  color: var(--couleur-cyan);
+  font-family: var(--police-titre);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.guide__bouton--principal {
+  background: var(--couleur-cyan);
+  color: var(--couleur-vide);
+}
+
+.guide__bouton:hover,
+.guide__bouton:focus-visible {
+  background: var(--couleur-texte);
+  border-color: var(--couleur-texte);
+  color: var(--couleur-vide);
+}
+
+/* Les icônes du bureau clignotent doucement tant que la bulle est ouverte */
+@media (prefers-reduced-motion: no-preference) {
+  .ecran--guide .raccourcis__icone {
+    animation: guide-appel 1.6s ease-in-out 3;
+  }
+}
+
+@keyframes guide-appel {
+  50% { border-color: var(--couleur-cyan); box-shadow: 0 0 14px rgba(94, 246, 255, 0.55); }
+}
+
+@media (max-width: 700px) {
+  .guide {
+    display: none;
+  }
+}

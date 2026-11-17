@@ -1,0 +1,186 @@
+/*
+  Petits blocs BEM réutilisés dans plusieurs fenêtres.
+  Chacun ne dépend que de lui-même : on peut le poser n'importe où.
+*/
+
+/* Surtitre : petite ligne en capitales au-dessus d'un titre */
+.surtitre {
+  margin: 0 0 12px;
+  font-family: var(--police-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--couleur-cyan);
+}
+
+/* Étiquettes : liste de technologies */
+.etiquettes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.etiquettes__item {
+  padding: 1px 6px;
+  border: 1px solid var(--couleur-cyan);
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--couleur-cyan);
+}
+
+/* Badge : contexte d'un projet (SAé, TP, perso) */
+.badge {
+  justify-self: start;
+  margin: 0;
+  padding: 1px 8px;
+  background: var(--couleur-attenue);
+  color: var(--couleur-vide);
+  font-family: var(--police-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badge--actif {
+  background: var(--couleur-rouge);
+}
+
+/* Action : bouton texte avec sa touche clavier, comme dans les menus du jeu */
+.action {
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 2px 8px 2px 0;
+  background: none;
+  border: 0;
+  font-family: var(--police-titre);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--couleur-cyan);
+}
+
+.action:hover {
+  color: var(--couleur-texte);
+  text-shadow: 1.5px 0 var(--couleur-rouge), -1.5px 0 var(--couleur-cyan);
+}
+
+.action__touche {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--couleur-cyan);
+  font-family: var(--police-mono);
+  font-size: 13px;
+}
+
+/* Retour visuel bref quand l'action est déclenchée au clavier */
+.action--frappe {
+  color: var(--couleur-vide);
+  background: var(--couleur-cyan);
+  text-shadow: none;
+}
+
+.action--frappe .action__touche {
+  border-color: var(--couleur-vide);
+}
+
+/* Bouton carré à icône : flèches de galerie, fermeture de la visionneuse */
+.bouton-icone {
+  width: 34px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: var(--couleur-panneau-2);
+  border: 1px solid var(--couleur-ligne);
+  color: var(--couleur-cyan);
+}
+
+.bouton-icone:hover {
+  border-color: var(--couleur-cyan);
+}
+
+.bouton-icone__icone {
+  width: 16px;
+  height: 16px;
+}
+
+/* Lien rapide : grand bouton cyan avec icône (profil) */
+.lien-rapide {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 10px;
+  background: transparent;
+  border: 1px solid var(--couleur-cyan);
+  color: var(--couleur-cyan);
+  font-family: var(--police-titre);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: left;
+  text-decoration: none;
+}
+
+.lien-rapide:hover,
+.lien-rapide:focus-visible {
+  background: var(--couleur-cyan);
+  color: var(--couleur-vide);
+}
+
+.lien-rapide__icone {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+/* Lien vers un projet (compétences) : icône, nom, code */
+.lien-projet {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  padding: 4px 10px;
+  background: transparent;
+  border: 1px solid var(--couleur-ligne);
+  color: var(--couleur-texte);
+  text-align: left;
+}
+
+.lien-projet:hover,
+.lien-projet:focus-visible {
+  border-color: var(--couleur-cyan);
+  background: var(--couleur-panneau);
+}
+
+.lien-projet__icone {
+  width: 18px;
+  height: 18px;
+  color: var(--couleur-cyan);
+}
+
+.lien-projet__nom {
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lien-projet__code {
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--couleur-attenue);
+}

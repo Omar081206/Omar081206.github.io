@@ -1,0 +1,15 @@
+<div class="galerie">
+  <figure class="galerie__visionneur">
+    <div class="galerie__capture">
+      <button type="button" class="galerie__agrandir" data-focus="galerie-agrandir" aria-label="Agrandir la capture : {{legende}}"><img class="galerie__image" src="{{src}}" alt="{{legende}}" loading="lazy"><span class="galerie__agrandir-indice" aria-hidden="true">Agrandir</span></button>
+    </div>
+    <figcaption class="galerie__legende">
+      <button type="button" class="bouton-icone" data-action="precedente" data-focus="galerie-precedente" aria-label="Capture précédente"><svg class="icone bouton-icone__icone" aria-hidden="true"><use href="#i-prev"></use></svg></button>
+      <span class="galerie__legende-texte">Capture {{numero}} / {{total}} · {{legende}}</span>
+      <button type="button" class="bouton-icone" data-action="suivante" data-focus="galerie-suivante" aria-label="Capture suivante"><svg class="icone bouton-icone__icone" aria-hidden="true"><use href="#i-next"></use></svg></button>
+    </figcaption>
+  </figure>
+  <div class="galerie__miniatures" role="group" aria-label="Captures du projet">
+    <slot name="miniatures"></slot>
+  </div>
+</div>

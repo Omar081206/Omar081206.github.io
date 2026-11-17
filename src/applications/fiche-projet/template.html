@@ -1,0 +1,37 @@
+<article class="fiche">
+  <div class="fiche__infos">
+    <header class="fiche__entete">
+      <div>
+        <p class="surtitre fiche__type">{{type}} · {{annee}}</p>
+        <h3 class="fiche__nom">{{nom}}</h3>
+      </div>
+      <p class="badge badge--actif">{{badge}}</p>
+    </header>
+    <p class="fiche__description">{{description}}</p>
+    <dl class="fiche__meta">
+      <slot name="meta"></slot>
+    </dl>
+    <slot name="technos"></slot>
+    <div class="fiche__actions">
+      <button type="button" class="action fiche__action" data-lien="maquette" data-focus="fiche-maquette" aria-keyshortcuts="F"><kbd class="action__touche">F</kbd>{{libelleMaquette}}</button>
+      <button type="button" class="action fiche__action" data-lien="code" data-focus="fiche-code" aria-keyshortcuts="G"><kbd class="action__touche">G</kbd>{{libelleCode}}</button>
+    </div>
+  </div>
+  <div class="galerie"></div>
+  <div class="fiche__colonnes">
+    <section class="fiche__bloc">
+      <h4 class="fiche__bloc-titre">Objectif</h4>
+      <p class="fiche__bloc-texte">{{objectif}}</p>
+    </section>
+    <section class="fiche__bloc">
+      <h4 class="fiche__bloc-titre">Résultat</h4>
+      <p class="fiche__bloc-texte">{{resultat}}</p>
+    </section>
+  </div>
+  <section class="fiche__bloc">
+    <h4 class="fiche__bloc-titre">Démarche</h4>
+    <ol class="fiche__etapes">
+      <slot name="etapes"></slot>
+    </ol>
+  </section>
+</article>

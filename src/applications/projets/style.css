@@ -1,0 +1,328 @@
+/* Bloc projets : explorateur à gauche, aperçu à droite */
+.projets {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 18px 22px;
+  align-items: start;
+}
+
+/* Bloc explorateur : chemin, filtre, arbre, résumé */
+.explorateur {
+  min-width: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.explorateur__chemin {
+  margin: 0;
+  padding: 6px 10px;
+  border: 1px solid var(--couleur-ligne);
+  background: var(--couleur-panneau-2);
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--couleur-attenue);
+  overflow-wrap: anywhere;
+}
+
+.explorateur__dossier {
+  font-weight: 400;
+  color: var(--couleur-cyan);
+}
+
+.explorateur__touches {
+  margin: 0;
+  font-family: var(--police-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--couleur-texte);
+  opacity: 0.85;
+}
+
+.explorateur__filtre {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  margin: 0;
+  padding: 6px 10px;
+  border: 1px solid var(--couleur-cyan);
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--couleur-cyan);
+}
+
+.explorateur__filtre-bouton {
+  margin-left: auto;
+  padding: 2px 8px;
+  background: transparent;
+  border: 1px solid var(--couleur-cyan);
+  color: var(--couleur-cyan);
+  font: inherit;
+}
+
+.explorateur__filtre-bouton:hover,
+.explorateur__filtre-bouton:focus-visible {
+  background: var(--couleur-cyan);
+  color: var(--couleur-vide);
+}
+
+.explorateur__resume {
+  margin: 4px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--couleur-ligne);
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--couleur-texte);
+}
+
+.explorateur__nombre {
+  font-weight: 400;
+  color: var(--couleur-cyan);
+}
+
+/* Bloc arbre : arborescence à traits, comme les terminaux du jeu */
+.arbre__racine {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  padding: 6px 0;
+  font-family: var(--police-titre);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--couleur-jaune);
+}
+
+.arbre__racine-icone {
+  width: 20px;
+  height: 20px;
+}
+
+.arbre__liste {
+  margin: 0 0 0 9px;
+  padding: 0;
+  list-style: none;
+}
+
+.arbre__liste--sous {
+  margin-left: 8px;
+}
+
+.arbre__noeud {
+  position: relative;
+  padding-left: 22px;
+}
+
+/* Trait vertical, coupé après le dernier élément, et trait horizontal */
+.arbre__noeud::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid var(--couleur-rouge);
+}
+
+.arbre__noeud:last-child::before {
+  bottom: auto;
+  height: 19px;
+}
+
+.arbre__noeud::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 19px;
+  width: 16px;
+  border-top: 1px solid var(--couleur-rouge);
+}
+
+.arbre__dossier {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  margin: 0 0 12px;
+  font-family: var(--police-titre);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--couleur-rouge);
+}
+
+.arbre__dossier-icone {
+  width: 16px;
+  height: 16px;
+}
+
+.arbre__compte {
+  margin-left: auto;
+  padding-right: 8px;
+  font-family: var(--police-mono);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--couleur-attenue);
+}
+
+.arbre__fichier {
+  width: 100%;
+  min-height: 38px;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 4px 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--couleur-texte);
+  text-align: left;
+}
+
+.arbre__fichier:hover {
+  border-color: var(--couleur-ligne);
+  background: var(--couleur-panneau-2);
+}
+
+.arbre__fichier[aria-current="true"] {
+  background: var(--couleur-rouge);
+  border-color: var(--couleur-rouge);
+  color: var(--couleur-vide);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+
+.arbre__fichier-icone {
+  width: 18px;
+  height: 18px;
+  color: var(--couleur-cyan);
+}
+
+.arbre__nom {
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.arbre__code {
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--couleur-attenue);
+}
+
+.arbre__fichier[aria-current="true"] .arbre__fichier-icone,
+.arbre__fichier[aria-current="true"] .arbre__code {
+  color: var(--couleur-vide);
+}
+
+/* Bloc apercu : projet choisi dans l'explorateur */
+.apercu {
+  min-width: 0;
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px 16px;
+  background: var(--couleur-panneau-2);
+  border: 1px solid var(--couleur-ligne);
+  border-left: 8px solid var(--couleur-ligne);
+}
+
+.apercu__couverture {
+  position: relative;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--couleur-rouge);
+  background: var(--couleur-panneau);
+}
+
+.apercu__couverture::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid var(--couleur-cyan);
+  border-bottom: 2px solid var(--couleur-cyan);
+}
+
+.apercu__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.apercu__entete {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 12px;
+}
+
+.apercu__nom {
+  margin: 0;
+  font-family: var(--police-titre);
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--couleur-texte);
+}
+
+.apercu__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--couleur-ligne);
+}
+
+.apercu__type {
+  margin: 0;
+  font-family: var(--police-titre);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--couleur-rouge);
+}
+
+.apercu__annee {
+  margin: 0;
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--couleur-attenue);
+}
+
+.apercu__description {
+  margin: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--couleur-ligne);
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--couleur-cyan);
+}
+
+/* Ordinateur à écran bas : couverture plus étroite pour tout voir */
+@media (min-width: 701px) and (max-height: 820px) {
+  .apercu__couverture {
+    aspect-ratio: 16 / 7;
+  }
+}
+
+@media (max-width: 700px) {
+  .projets {
+    grid-template-columns: 1fr;
+  }
+
+  .explorateur__touches {
+    display: none;
+  }
+}

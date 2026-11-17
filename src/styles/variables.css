@@ -1,0 +1,49 @@
+/*
+  Jetons de la charte Netrunner OS.
+  Palette des terminaux du jeu : rouge saumon sur noir bleuté,
+  cyan = interaction, jaune = marque.
+*/
+:root {
+  --couleur-vide: #07090d;
+  --couleur-panneau: #0c1016;
+  --couleur-panneau-2: #131922;
+  --couleur-ligne: #5a2224;
+  --couleur-jaune: #fcee0a;
+  --couleur-cyan: #5ef6ff;
+  --couleur-rouge: #ff5f56;
+  --couleur-texte: #f4b3ac;
+  --couleur-attenue: #a0605b;
+  --couleur-halo: rgba(255, 95, 86, 0.22);
+  --couleur-noeud: #2a1216;
+  --couleur-noeud-actif: #0b2a31;
+  --couleur-titre-sous: #54c4e0;
+
+  --police-titre: "Chakra Petch", "Arial Narrow", sans-serif;
+  --police-texte: "Rajdhani", "Segoe UI", sans-serif;
+  --police-mono: "Share Tech Mono", "Courier New", monospace;
+
+  --hauteur-barre-menu: 32px;
+  /* Place réservée sous une fenêtre agrandie quand la barre des tâches est visible */
+  --hauteur-dock: 92px;
+
+  color-scheme: dark;
+}
+
+/*
+  Mode filaire (commande « wireframe » du terminal) : mêmes jetons,
+  en niveaux de gris.
+*/
+.ecran--filaire {
+  --couleur-vide: #efefef;
+  --couleur-panneau: #ffffff;
+  --couleur-panneau-2: #e6e6e6;
+  --couleur-ligne: #9a9a9a;
+  --couleur-jaune: #1f1f1f;
+  --couleur-cyan: #555555;
+  --couleur-rouge: #777777;
+  --couleur-texte: #151515;
+  --couleur-attenue: #666666;
+  --couleur-halo: transparent;
+  --couleur-noeud: #f4f4f4;
+  --couleur-noeud-actif: #dcdcdc;
+}

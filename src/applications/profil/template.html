@@ -1,0 +1,20 @@
+<div class="profil">
+  <div class="profil__texte">
+    <p class="surtitre">Identité &#47;&#47; Profil 01</p>
+    <h3 class="profil__nom">{{prenom}}</h3>
+    <p class="profil__presentation">{{presentation}}</p>
+    <ul class="profil__faits">
+      <slot name="faits"></slot>
+    </ul>
+  </div>
+  <aside class="profil__lateral" aria-labelledby="profil-acces">
+    <p class="profil__statut"><span class="profil__voyant" aria-hidden="true"></span>{{disponibilite}}</p>
+    <p class="surtitre profil__surtitre" id="profil-acces">Accès rapide</p>
+    <ul class="profil__liens">
+      <li><button type="button" class="lien-rapide" data-ouvrir="projets"><svg class="icone lien-rapide__icone" aria-hidden="true"><use href="#i-folder"></use></svg>Voir mes projets</button></li>
+      <li><button type="button" class="lien-rapide" data-ouvrir="competences"><svg class="icone lien-rapide__icone" aria-hidden="true"><use href="#i-chart"></use></svg>Mes compétences</button></li>
+      <li><button type="button" class="lien-rapide" data-ouvrir="contact"><svg class="icone lien-rapide__icone" aria-hidden="true"><use href="#i-mail"></use></svg>Me contacter</button></li>
+      <li><a class="lien-rapide" href="{{cv}}" download><svg class="icone lien-rapide__icone" aria-hidden="true"><use href="#i-down"></use></svg>Mon CV (PDF)</a></li>
+    </ul>
+  </aside>
+</div>

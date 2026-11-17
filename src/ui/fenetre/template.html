@@ -1,0 +1,16 @@
+<section class="fenetre" id="{{id}}" data-titre="{{titre}}" aria-labelledby="{{id}}-titre">
+  <div class="fenetre__cadre">
+    <header class="fenetre__barre">
+      <div class="fenetre__commandes">
+        <button type="button" class="fenetre__commande fenetre__commande--fermer" data-commande="fermer" aria-label="Fermer"><svg class="icone fenetre__commande-icone" aria-hidden="true"><use href="#i-close"></use></svg></button>
+        <button type="button" class="fenetre__commande fenetre__commande--reduire" data-commande="reduire" aria-label="Réduire"><svg class="icone fenetre__commande-icone" aria-hidden="true"><use href="#i-min"></use></svg></button>
+        <button type="button" class="fenetre__commande fenetre__commande--agrandir" data-commande="agrandir" aria-label="Agrandir"><svg class="icone fenetre__commande-icone" aria-hidden="true"><use href="#i-max"></use></svg></button>
+      </div>
+      <h2 class="fenetre__titre" id="{{id}}-titre" tabindex="-1">{{titre}}</h2>
+      <span class="fenetre__id" aria-hidden="true">ID {{code}}<span class="fenetre__code-barres"></span></span>
+    </header>
+    <div class="fenetre__contenu">
+      <slot name="contenu"></slot>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,99 @@
+/* Bloc barre-menu : barre du haut, façon barre de menu macOS */
+.barre-menu {
+  position: relative;
+  z-index: 900;
+  height: var(--hauteur-barre-menu);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 12px;
+  background: var(--couleur-panneau);
+  border-bottom: 1px solid var(--couleur-rouge);
+  font-family: var(--police-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.barre-menu__groupe {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.barre-menu__marque {
+  padding: 0;
+  background: none;
+  border: 0;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--couleur-jaune);
+}
+
+.barre-menu__marque:hover {
+  text-shadow: 1.5px 0 var(--couleur-rouge), -1.5px 0 var(--couleur-cyan);
+}
+
+.barre-menu__logo {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  vertical-align: -4px;
+}
+
+.barre-menu__appli {
+  overflow: hidden;
+  color: var(--couleur-texte);
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.barre-menu__bascule {
+  padding: 2px 8px;
+  background: none;
+  border: 1px solid var(--couleur-ligne);
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--couleur-attenue);
+}
+
+.barre-menu__bascule[aria-pressed="true"] {
+  color: var(--couleur-vide);
+  background: var(--couleur-cyan);
+  border-color: var(--couleur-cyan);
+}
+
+.barre-menu__statut {
+  color: var(--couleur-attenue);
+  white-space: nowrap;
+}
+
+.barre-menu__valeur {
+  font-weight: 400;
+  color: var(--couleur-cyan);
+}
+
+@media (max-width: 700px) {
+  .barre-menu {
+    padding: 0 max(12px, env(safe-area-inset-right, 0px)) 0 max(12px, env(safe-area-inset-left, 0px));
+  }
+
+  .barre-menu__groupe--droite {
+    gap: 6px;
+  }
+
+  .barre-menu__statut:not(.barre-menu__statut--horloge),
+  .barre-menu__appli,
+  .barre-menu__bascule--ordinateur {
+    display: none;
+  }
+
+  .barre-menu__bascule {
+    min-height: 32px;
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+}

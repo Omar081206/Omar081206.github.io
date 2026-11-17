@@ -1,0 +1,14 @@
+<div class="fond">
+  <div class="fond__image" hidden></div>
+  <div class="fond__scene" aria-hidden="true">
+    <div class="fond__calque fond__calque--base"></div>
+    <div class="fond__calque fond__calque--code"></div>
+    <div class="fond__calque fond__calque--rouge"></div>
+    <div class="fond__calque fond__calque--faisceau fond__calque--faisceau-a"></div>
+    <div class="fond__calque fond__calque--faisceau fond__calque--faisceau-b"></div>
+  </div>
+  <div class="fond__effets" aria-hidden="true"><span class="fond__balayage"></span><span class="fond__scintillement"></span></div>
+  <slot name="accueil"></slot>
+  <label class="visuellement-cache" for="fond-fichier">Choisir une image de fond d'écran</label>
+  <input class="visuellement-cache" type="file" id="fond-fichier" accept="image/*" tabindex="-1">
+</div>

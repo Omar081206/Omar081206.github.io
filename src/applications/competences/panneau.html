@@ -1,0 +1,14 @@
+<h3 class="competences__nom">{{nom}}</h3>
+<p class="competences__niveau">- {{nombreProjets}}</p>
+<p class="competences__description">{{description}}</p>
+<p class="competences__sous-titre">Savoir-faire</p>
+<ul class="competences__savoirs">
+  <slot name="savoirs"></slot>
+</ul>
+<p class="competences__sous-titre" id="competences-outils">Logiciels et langages</p>
+<slot name="outils"></slot>
+<p class="competences__sous-titre" id="competences-projets">Projets liés</p>
+<ul class="competences__projets" aria-labelledby="competences-projets">
+  <slot name="projets"></slot>
+</ul>
+<button type="button" class="action competences__explorer" data-action="explorer" data-focus="competences-explorer"><kbd class="action__touche">&#8629;</kbd>Voir dans l'explorateur de projets</button>

@@ -1,0 +1,248 @@
+/*
+  Bloc fond : fond d'écran du bureau.
+  Par défaut, scène en calques WebP (le noir des calques « screen » est
+  transparent) ; sinon l'image choisie par le visiteur (fond--image).
+*/
+.fond {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 105%, var(--couleur-halo), transparent 70%),
+    linear-gradient(180deg, var(--couleur-vide) 0%, var(--couleur-panneau-2) 100%);
+}
+
+.fond::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 3px);
+}
+
+.ecran--filaire .fond::after {
+  display: none;
+}
+
+/* Image du visiteur : floutée derrière le titre, nette sans titre */
+.fond__image {
+  position: absolute;
+  inset: -24px;
+  background-position: center;
+  background-size: cover;
+  filter: blur(7px) brightness(0.5) saturate(1.1);
+}
+
+.fond__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 9, 13, 0.55), rgba(7, 9, 13, 0.25) 40%, rgba(7, 9, 13, 0.6));
+}
+
+.fond--sans-titre .fond__image {
+  filter: none;
+}
+
+.ecran--filaire .fond__image {
+  display: none;
+}
+
+.fond__scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  filter: brightness(0.78) saturate(0.95);
+}
+
+.fond--image .fond__scene,
+.ecran--filaire .fond__scene {
+  display: none;
+}
+
+.fond__calque {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+}
+
+.fond__calque--base {
+  background-image: url("../../assets/fond/base.webp");
+}
+
+.fond__calque--code {
+  background-image: url("../../assets/fond/code.webp");
+  background-repeat: repeat-y;
+  background-size: 100% 1080px;
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}
+
+.fond__calque--rouge {
+  background-image: url("../../assets/fond/rouge.webp");
+  mix-blend-mode: screen;
+}
+
+.fond__calque--faisceau {
+  right: auto;
+  left: 0;
+  width: 200%;
+  background-size: 100% 100%;
+  mix-blend-mode: screen;
+}
+
+.fond__calque--faisceau-a {
+  background-image: url("../../assets/fond/faisceau-a.webp");
+}
+
+.fond__calque--faisceau-b {
+  background-image: url("../../assets/fond/faisceau-b.webp");
+}
+
+.fond__effets {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.fond--image .fond__effets,
+.ecran--filaire .fond__effets {
+  display: none;
+}
+
+.fond__balayage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20%;
+  height: 18%;
+  background: linear-gradient(180deg, transparent, rgba(46, 233, 255, 0.07) 45%, rgba(46, 233, 255, 0.14) 50%, rgba(46, 233, 255, 0.07) 55%, transparent);
+}
+
+.fond__scintillement {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 70, 80, 0.06);
+  opacity: 0;
+  mix-blend-mode: screen;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fond__calque--code {
+    animation: fond-code 24s linear infinite;
+  }
+
+  .fond__calque--rouge {
+    animation: fond-rouge 5s ease-in-out infinite;
+  }
+
+  .fond__calque--faisceau-a {
+    animation: fond-faisceau 38s linear infinite;
+  }
+
+  .fond__calque--faisceau-b {
+    animation: fond-faisceau 26s linear infinite reverse;
+  }
+
+  .fond__balayage {
+    animation: fond-balayage 9s linear infinite;
+  }
+
+  .fond__scintillement {
+    animation: fond-scintillement 7s steps(1) infinite;
+  }
+}
+
+/* Interrupteur ANIM. FOND coupé */
+.ecran--sans-animation .fond__calque,
+.ecran--sans-animation .fond__balayage,
+.ecran--sans-animation .fond__scintillement {
+  animation: none !important;
+}
+
+.ecran--sans-animation .fond__scintillement {
+  opacity: 0;
+}
+
+@keyframes fond-code {
+  from {
+    background-position: center 0;
+  }
+
+  to {
+    background-position: center 1080px;
+  }
+}
+
+@keyframes fond-rouge {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  52% {
+    opacity: 1;
+  }
+
+  53% {
+    opacity: 0.6;
+  }
+
+  55% {
+    opacity: 1;
+  }
+}
+
+@keyframes fond-faisceau {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes fond-balayage {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(700%);
+  }
+}
+
+@keyframes fond-scintillement {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  61% {
+    opacity: 1;
+  }
+
+  62% {
+    opacity: 0;
+  }
+
+  64% {
+    opacity: 0.7;
+  }
+
+  65% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .fond__scene {
+    filter: brightness(0.5) saturate(0.9);
+  }
+}

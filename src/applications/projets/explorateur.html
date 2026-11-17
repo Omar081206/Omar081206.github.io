@@ -1,0 +1,12 @@
+<nav class="explorateur" aria-label="Arborescence des projets">
+  <p class="explorateur__chemin">/home/netrunner/<b class="explorateur__dossier">{{dossier}}</b></p>
+  <p class="explorateur__touches">↑↓ choisir · ↵ ouvrir · F maquette · G code</p>
+  <slot name="filtre"></slot>
+  <div class="arbre">
+    <p class="arbre__racine"><svg class="icone arbre__racine-icone" aria-hidden="true"><use href="#i-folder"></use></svg>Projets</p>
+    <ul class="arbre__liste">
+      <slot name="dossiers"></slot>
+    </ul>
+  </div>
+  <p class="explorateur__resume"><b class="explorateur__nombre">{{total}}</b> {{motProjets}} · <b class="explorateur__nombre">{{dossiers}}</b> {{motDossiers}} · <span>{{indice}}</span></p>
+</nav>

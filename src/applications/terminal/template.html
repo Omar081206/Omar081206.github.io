@@ -1,0 +1,11 @@
+<div class="terminal">
+  <div class="terminal__sortie" role="log" aria-live="polite"></div>
+  <form class="terminal__formulaire" autocomplete="off">
+    <label class="visuellement-cache" for="terminal-saisie">Commande</label>
+    <span class="terminal__invite" aria-hidden="true">{{invite}}</span>
+    <input class="terminal__saisie" id="terminal-saisie" type="text" spellcheck="false" autocapitalize="off">
+  </form>
+  <div class="terminal__puces" role="group" aria-label="Commandes rapides">
+    <slot name="puces"></slot>
+  </div>
+</div>

@@ -1,0 +1,117 @@
+/* Bloc contact : liste des coordonnées, bouton CV, crédits */
+.contact__liste {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  font-family: var(--police-mono);
+  font-size: 14px;
+}
+
+.contact__ligne {
+  display: grid;
+  grid-template-columns: 9ch 1fr;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--couleur-ligne);
+}
+
+.contact__libelle {
+  color: var(--couleur-attenue);
+}
+
+.contact__valeur {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.contact__valeur--mail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+}
+
+.contact__lien {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--couleur-ligne);
+  text-underline-offset: 3px;
+}
+
+.contact__lien:hover,
+.contact__lien:focus-visible {
+  color: var(--couleur-cyan);
+  text-decoration-color: var(--couleur-cyan);
+}
+
+.contact__copier {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  background: transparent;
+  border: 1px solid var(--couleur-cyan);
+  color: var(--couleur-cyan);
+  font-family: var(--police-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.contact__copier:hover,
+.contact__copier:focus-visible {
+  background: var(--couleur-cyan);
+  color: var(--couleur-vide);
+}
+
+.contact__copier-icone {
+  width: 13px;
+  height: 13px;
+}
+
+.contact__credit {
+  margin: 14px 0 0;
+  font-family: var(--police-mono);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--couleur-texte);
+}
+
+/* Bloc bouton-cv : grand bouton de téléchargement à coins coupés */
+.bouton-cv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 10px 14px;
+  background: var(--couleur-cyan);
+  border: 1px solid var(--couleur-cyan);
+  color: var(--couleur-vide);
+  font-family: var(--police-titre);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.bouton-cv:hover,
+.bouton-cv:focus-visible {
+  background: var(--couleur-vide);
+  color: var(--couleur-cyan);
+}
+
+.bouton-cv__icone {
+  width: 20px;
+  height: 20px;
+}
+
+.bouton-cv__format {
+  font-family: var(--police-mono);
+  font-size: 13px;
+  font-weight: 400;
+  opacity: 0.75;
+}

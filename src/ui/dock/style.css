@@ -1,0 +1,169 @@
+/*
+  Bloc dock : barre des tâches.
+  Ordinateur : toujours visible, pleine largeur, comme celle d'un vrai système
+  (bouton NOS, applications épinglées avec leur nom, fiches projet ouvertes).
+  Téléphone : cachée tant qu'aucune fenêtre n'est ouverte, icônes seules.
+*/
+.dock {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 800;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 56px;
+  margin: 0;
+  padding: 6px max(12px, env(safe-area-inset-right, 0px)) 6px max(12px, env(safe-area-inset-left, 0px));
+  list-style: none;
+  background: rgba(12, 16, 22, 0.96);
+  border-top: 1px solid var(--couleur-rouge);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.dock__item {
+  position: relative;
+  flex: none;
+}
+
+.dock__item--ouverte::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 24px;
+  height: 3px;
+  margin-left: -12px;
+  background: var(--couleur-cyan);
+}
+
+.dock__item--presente:not(.dock__item--ouverte)::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 8px;
+  height: 3px;
+  margin-left: -4px;
+  background: var(--couleur-attenue);
+}
+
+.dock__demarrer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  margin-right: 8px;
+  padding: 0 14px;
+  background: var(--couleur-jaune);
+  border: 0;
+  color: var(--couleur-vide);
+  font-family: var(--police-titre);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+
+.dock__demarrer:hover,
+.dock__demarrer[aria-expanded="true"] {
+  background: var(--couleur-cyan);
+}
+
+.dock__logo {
+  width: 20px;
+  height: 20px;
+}
+
+.dock__bouton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 14px 0 10px;
+  background: var(--couleur-panneau-2);
+  border: 1px solid var(--couleur-ligne);
+  color: var(--couleur-texte);
+  font-family: var(--police-titre);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+
+.dock__item--fiche .dock__bouton {
+  max-width: 200px;
+}
+
+.dock__libelle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dock__item--ouverte .dock__bouton {
+  border-color: var(--couleur-cyan);
+}
+
+.dock__bouton:hover {
+  border-color: var(--couleur-cyan);
+  color: var(--couleur-cyan);
+}
+
+.dock__icone {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  color: var(--couleur-cyan);
+}
+
+.dock__separateur {
+  align-self: stretch;
+  width: 1px;
+  margin: 4px 6px;
+  background: var(--couleur-ligne);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dock__bouton {
+    transition: color 0.12s, border-color 0.12s;
+  }
+}
+
+@media (max-width: 700px) {
+  .dock {
+    justify-content: space-around;
+    gap: 4px;
+    min-height: 0;
+    padding: 8px max(10px, env(safe-area-inset-right, 0px)) 8px max(10px, env(safe-area-inset-left, 0px));
+    transition: transform 0.25s ease;
+  }
+
+  .ecran:not(.ecran--dock-visible) .dock {
+    transform: translateY(110%);
+  }
+
+  .dock__item--demarrer,
+  .dock__item--appli:not(.dock__item--presente),
+  .dock__separateur,
+  .dock__libelle {
+    display: none;
+  }
+
+  .dock__bouton {
+    width: 46px;
+    height: 46px;
+    justify-content: center;
+    padding: 0;
+    color: var(--couleur-rouge);
+  }
+
+  .dock__icone {
+    width: 24px;
+    height: 24px;
+    color: currentColor;
+  }
+}

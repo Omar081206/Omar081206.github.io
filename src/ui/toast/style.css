@@ -1,0 +1,20 @@
+/* Bloc toast : message bref au-dessus de la barre des tâches */
+.toast {
+  position: absolute;
+  z-index: 950;
+  left: 50%;
+  bottom: 84px;
+  margin: 0;
+  padding: 8px 14px;
+  background: var(--couleur-rouge);
+  color: var(--couleur-vide);
+  font-family: var(--police-mono);
+  font-size: 13px;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 700px) {
+  .toast {
+    bottom: 80px;
+  }
+}

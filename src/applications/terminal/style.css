@@ -1,0 +1,123 @@
+/* Bloc terminal : journal, ligne de commande, commandes rapides */
+.terminal {
+  font-family: var(--police-mono);
+  font-size: 14px;
+}
+
+.terminal__sortie {
+  min-height: 150px;
+  max-height: 260px;
+  margin: 0 0 8px;
+  overflow: auto;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  color: var(--couleur-texte);
+}
+
+.terminal__ligne--commande,
+.terminal__ligne--dossier,
+.terminal__ligne--indice {
+  color: var(--couleur-cyan);
+}
+
+.terminal__ligne--erreur {
+  color: var(--couleur-rouge);
+}
+
+/* Résultat de ls : noms côte à côte */
+.terminal__entrees {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+}
+
+.terminal__entree--dossier {
+  color: var(--couleur-cyan);
+}
+
+.terminal__formulaire {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--couleur-ligne);
+}
+
+.terminal__formulaire:focus-within {
+  border-top-color: var(--couleur-cyan);
+}
+
+.terminal__invite {
+  color: var(--couleur-cyan);
+  white-space: nowrap;
+}
+
+.terminal__saisie {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 0;
+  background: transparent;
+  border: 0;
+  color: var(--couleur-texte);
+  font: inherit;
+  caret-color: var(--couleur-cyan);
+}
+
+/* Le cadre du formulaire (:focus-within) remplace le contour du champ */
+.terminal__saisie:focus-visible {
+  outline: none;
+}
+
+.terminal__puces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.terminal__puce {
+  padding: 4px 8px;
+  background: transparent;
+  border: 1px solid var(--couleur-ligne);
+  color: var(--couleur-cyan);
+  font-family: var(--police-mono);
+  font-size: 13px;
+}
+
+.terminal__puce:hover,
+.terminal__puce:focus-visible {
+  border-color: var(--couleur-cyan);
+}
+
+/* Téléphone : le journal prend toute la hauteur libre */
+@media (max-width: 700px) {
+  .fenetre__contenu--terminal {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .terminal {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .terminal__sortie {
+    flex: 1;
+    max-height: none;
+  }
+
+  .terminal__saisie {
+    font-size: 16px;
+  }
+
+  .terminal__puce {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .terminal__puce:active {
+    border-color: var(--couleur-cyan);
+  }
+}

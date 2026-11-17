@@ -1,0 +1,402 @@
+/*
+  Bloc fiche : fiche détaillée d'un projet.
+  Ordre normal : en-tête, méta, liens, galerie, objectif / résultat, démarche,
+  puis les technologies (fiche__infos est « transparent » : display contents).
+  Fenêtre agrandie et large : galerie à gauche, infos à droite (fiche produit).
+*/
+.fiche {
+  display: grid;
+  gap: 18px;
+}
+
+.fiche__infos {
+  display: contents;
+}
+
+.fiche__technos {
+  order: 10;
+}
+
+.fiche__entete {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--couleur-rouge);
+}
+
+.fiche__type {
+  margin: 0 0 6px;
+}
+
+.fiche__nom {
+  margin: 0;
+  font-family: var(--police-titre);
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--couleur-texte);
+}
+
+/* Description courte : seulement en fiche agrandie (sinon redite de l'aperçu) */
+.fiche__description {
+  display: none;
+  max-width: none;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--couleur-cyan);
+}
+
+.fiche__meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  margin: 0;
+  background: var(--couleur-ligne);
+  border: 1px solid var(--couleur-ligne);
+}
+
+.fiche__meta-ligne {
+  padding: 10px 12px;
+  background: var(--couleur-panneau-2);
+}
+
+.fiche__meta-libelle {
+  font-family: var(--police-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--couleur-texte);
+}
+
+.fiche__meta-valeur {
+  margin: 4px 0 0;
+  font-size: 16px;
+}
+
+.fiche__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+}
+
+.fiche__action {
+  margin-top: 6px;
+}
+
+.fiche__colonnes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.fiche__bloc {
+  min-width: 0;
+}
+
+.fiche__bloc-titre {
+  margin: 0 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--couleur-ligne);
+  font-family: var(--police-titre);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--couleur-rouge);
+}
+
+.fiche__bloc-texte {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.fiche__etapes {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: etape;
+}
+
+.fiche__etape {
+  display: grid;
+  grid-template-columns: 3ch 1fr;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.4;
+  counter-increment: etape;
+}
+
+.fiche__etape::before {
+  content: counter(etape, decimal-leading-zero);
+  padding-top: 2px;
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--couleur-cyan);
+}
+
+/*
+  Bloc galerie : capture agrandissable, légende avec flèches, miniatures.
+  Sur ordinateur, la hauteur de la capture (--capture-h) est calculée en JS
+  pour que l'ensemble tienne sans défiler.
+*/
+.galerie {
+  width: 100%;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  justify-self: center;
+}
+
+.galerie__visionneur {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  margin: 0;
+}
+
+.galerie__capture {
+  position: relative;
+  max-width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--couleur-panneau-2);
+  border: 1px solid var(--couleur-rouge);
+}
+
+/* Repères d'angle cyan */
+.galerie__capture::before,
+.galerie__capture::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--couleur-cyan);
+  pointer-events: none;
+}
+
+.galerie__capture::before {
+  top: 6px;
+  left: 6px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.galerie__capture::after {
+  right: 6px;
+  bottom: 6px;
+  border-left: 0;
+  border-top: 0;
+}
+
+.galerie__agrandir {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+.galerie__agrandir:focus-visible {
+  outline: 2px solid var(--couleur-cyan);
+  outline-offset: -4px;
+}
+
+.galerie__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.galerie__agrandir-indice {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  padding: 4px 8px;
+  background: var(--couleur-cyan);
+  font-family: var(--police-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--couleur-vide);
+}
+
+.galerie__agrandir:hover .galerie__agrandir-indice,
+.galerie__agrandir:focus-visible .galerie__agrandir-indice {
+  background: var(--couleur-jaune);
+}
+
+.galerie__legende {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--police-mono);
+  font-size: 13px;
+  color: var(--couleur-texte);
+}
+
+.galerie__legende-texte {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.galerie__miniatures {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 4px;
+  overflow-x: auto;
+}
+
+.galerie__miniature {
+  position: relative;
+  flex: none;
+  width: 112px;
+  aspect-ratio: 16 / 10;
+  padding: 0;
+  overflow: hidden;
+  background: var(--couleur-panneau-2);
+  border: 1px solid var(--couleur-ligne);
+  color: var(--couleur-attenue);
+}
+
+.galerie__miniature[aria-pressed="true"] {
+  border-color: var(--couleur-cyan);
+}
+
+.galerie__miniature-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  opacity: 0.6;
+}
+
+.galerie__miniature[aria-pressed="true"] .galerie__miniature-image {
+  opacity: 1;
+}
+
+/* Ordinateur : miniatures en colonne à gauche, capture sur le reste */
+@media (min-width: 701px) {
+  .fiche {
+    gap: 14px;
+  }
+
+  .fiche__meta-ligne {
+    padding: 7px 12px;
+  }
+
+  .fiche__meta-valeur {
+    font-size: 15px;
+  }
+
+  .galerie {
+    grid-template-columns: 92px minmax(0, 1fr);
+    grid-template-areas: "miniatures visionneur";
+    align-items: start;
+    gap: 12px;
+  }
+
+  .galerie__visionneur {
+    grid-area: visionneur;
+  }
+
+  .galerie__capture {
+    aspect-ratio: auto;
+    height: var(--capture-h, 420px);
+  }
+
+  .galerie__miniatures {
+    grid-area: miniatures;
+    flex-direction: column;
+    max-height: calc(var(--capture-h, 420px) + 44px);
+    padding: 0 4px 0 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .galerie__miniature {
+    width: 84px;
+  }
+}
+
+/* Fiche dans une fenêtre agrandie */
+.fenetre--agrandie .fiche {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1000px) {
+  .fenetre--agrandie .fiche {
+    grid-template-columns: minmax(0, 1fr) clamp(300px, 26vw, 400px);
+    column-gap: 28px;
+    align-items: start;
+    max-width: none;
+  }
+
+  .fenetre--agrandie .fiche > * {
+    grid-column: 1 / -1;
+  }
+
+  .fenetre--agrandie .fiche > .galerie {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: stretch;
+    gap: 8px;
+  }
+
+  .fenetre--agrandie .fiche__infos {
+    grid-column: 2;
+    grid-row: 1;
+    display: grid;
+    gap: 16px;
+    min-width: 0;
+    padding: 20px;
+    background: var(--couleur-panneau-2);
+    border: 1px solid var(--couleur-ligne);
+  }
+
+  .fenetre--agrandie .fiche__technos {
+    order: 0;
+  }
+
+  .fenetre--agrandie .fiche__description {
+    display: block;
+  }
+
+  .fenetre--agrandie .fiche__meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .fiche__colonnes {
+    grid-template-columns: 1fr;
+  }
+
+  .fiche__nom {
+    font-size: 24px;
+  }
+
+  .galerie__miniature {
+    width: 92px;
+  }
+}

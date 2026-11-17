@@ -1,0 +1,18 @@
+<div class="competences">
+  <div class="competences__carte">
+    <p class="competences__consigne">Sélectionnez une compétence</p>
+    <div class="carte-attributs">
+      <svg class="carte-attributs__liens" viewBox="0 0 100 86" preserveAspectRatio="none" aria-hidden="true">
+        <path class="carte-attributs__lien" vector-effect="non-scaling-stroke" data-lien="front" d="M48 43V24H25V11"/>
+        <path class="carte-attributs__lien" vector-effect="non-scaling-stroke" data-lien="script" d="M52 43V24H75V11"/>
+        <path class="carte-attributs__lien" vector-effect="non-scaling-stroke" data-lien="design" d="M50 43H17"/>
+        <path class="carte-attributs__lien" vector-effect="non-scaling-stroke" data-lien="ia" d="M50 43H83"/>
+        <path class="carte-attributs__lien" vector-effect="non-scaling-stroke" data-lien="back" d="M48 43V62H25V75"/>
+        <path class="carte-attributs__lien" vector-effect="non-scaling-stroke" data-lien="motion" d="M52 43V62H75V75"/>
+      </svg>
+      <div class="carte-attributs__coeur" aria-hidden="true"><span class="carte-attributs__coeur-interieur"><b class="carte-attributs__coeur-valeur">2</b><small class="carte-attributs__coeur-libelle">Année</small></span></div>
+      <slot name="noeuds"></slot>
+    </div>
+  </div>
+  <aside class="competences__panneau" aria-live="polite"></aside>
+</div>

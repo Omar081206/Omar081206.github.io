@@ -1,0 +1,254 @@
+/*
+  Bloc accueil : titre OMAR centré sur le fond d'écran, accroche et accès
+  rapides. Il laisse passer les clics (pointer-events), sauf sur ses boutons.
+*/
+.accueil {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 47%;
+  display: grid;
+  justify-items: center;
+  gap: 34px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+/* Voile sombre derrière le titre pour qu'il reste lisible sur la scène */
+.accueil::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 2%;
+  right: 2%;
+  top: -14%;
+  bottom: -10%;
+  pointer-events: none;
+  background: radial-gradient(ellipse 50% 50% at 50% 48%, rgba(2, 4, 6, 0.82) 0%, rgba(2, 4, 6, 0.55) 55%, rgba(2, 4, 6, 0) 100%);
+}
+
+.fond--sans-titre .accueil__titre,
+.fond--sans-titre .accueil::before {
+  display: none;
+}
+
+.accueil__titre {
+  width: min(1180px, calc(100% - 260px));
+}
+
+.accueil__heros {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  margin-top: -14px;
+  text-align: center;
+  pointer-events: auto;
+}
+
+.accueil__identite {
+  margin: 0;
+  padding: 4px 12px;
+  background: rgba(7, 9, 13, 0.78);
+  font-family: var(--police-mono);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  color: var(--couleur-texte);
+}
+
+.accueil__acces {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.accueil__bouton {
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--couleur-cyan);
+  outline-offset: 3px;
+}
+
+/* Bordure en double couche : cadre cyan de 1 px autour de l'intérieur */
+.accueil__bouton-cadre {
+  display: block;
+  padding: 1px;
+  background: var(--couleur-cyan);
+  clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 11px 100%, 0 calc(100% - 11px));
+}
+
+.accueil__bouton-interieur {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 8px 18px 8px 14px;
+  background: rgba(7, 9, 13, 0.92);
+  font-family: var(--police-titre);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  clip-path: polygon(0 0, calc(100% - 10.5px) 0, 100% 10.5px, 100% 100%, 10.5px 100%, 0 calc(100% - 10.5px));
+}
+
+.accueil__bouton:hover .accueil__bouton-interieur,
+.accueil__bouton:focus-visible .accueil__bouton-interieur {
+  background: var(--couleur-cyan);
+  color: var(--couleur-vide);
+}
+
+.accueil__bouton-icone {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+/*
+  Bloc titre-omar : image du titre (lisse au repos) et sa copie « glitchée »,
+  montrée une demi-seconde toutes les 10 à 30 s (voir AccueilView.glitcher).
+*/
+.titre-omar {
+  height: auto;
+  overflow: visible;
+}
+
+.ecran--filaire .titre-omar {
+  filter: grayscale(1);
+}
+
+.titre-omar__glitch {
+  opacity: 0;
+}
+
+.titre-omar--glitch .titre-omar__glitch {
+  opacity: 1;
+}
+
+.titre-omar--glitch .titre-omar__base {
+  visibility: hidden;
+  animation: titre-omar-tremblement 0.5s steps(1) 1;
+}
+
+.titre-omar__canal {
+  opacity: 0.55;
+  mix-blend-mode: screen;
+}
+
+.titre-omar__canal--rouge {
+  transform: translate(-7px, 0);
+}
+
+.titre-omar__canal--cyan {
+  transform: translate(7px, 0);
+}
+
+.titre-omar--glitch .titre-omar__tranche--1 {
+  animation: titre-omar-tranche 0.5s steps(1) 1;
+}
+
+.titre-omar--glitch .titre-omar__tranche--2 {
+  animation: titre-omar-tranche 0.5s steps(1) 1 reverse;
+}
+
+.titre-omar--glitch .titre-omar__tranche--3 {
+  animation: titre-omar-tranche 0.5s steps(1) 1 0.06s;
+}
+
+/* Interrupteur GLITCH coupé */
+.ecran--sans-glitch .titre-omar__glitch {
+  opacity: 0 !important;
+}
+
+.ecran--sans-glitch .titre-omar__base {
+  animation: none !important;
+}
+
+.titre-omar__sous-titre {
+  fill: none;
+  stroke: var(--couleur-titre-sous);
+  stroke-width: 2;
+}
+
+.titre-omar__sous-titre circle {
+  fill: none;
+}
+
+.titre-omar__sous-titre text {
+  font-family: var(--police-titre);
+  font-size: 40px;
+  font-weight: 600;
+  fill: var(--couleur-titre-sous);
+  stroke: none;
+  text-anchor: middle;
+}
+
+.titre-omar__trait {
+  fill: none;
+  stroke: var(--couleur-titre-sous);
+  stroke-width: 2;
+}
+
+@keyframes titre-omar-tremblement {
+  0%,
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+
+  20% {
+    transform: translateX(4px);
+  }
+
+  40% {
+    opacity: 0.7;
+  }
+
+  60% {
+    transform: translateX(-3px);
+    opacity: 1;
+  }
+}
+
+@keyframes titre-omar-tranche {
+  0% {
+    transform: translateX(22px);
+  }
+
+  25% {
+    transform: translateX(-30px);
+  }
+
+  50% {
+    transform: translateX(12px);
+  }
+
+  75% {
+    transform: translateX(-8px);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .accueil {
+    top: 74%;
+  }
+
+  .accueil__titre {
+    width: 96%;
+  }
+
+  .accueil__heros {
+    display: none;
+  }
+}
